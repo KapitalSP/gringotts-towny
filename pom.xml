@@ -7,8 +7,8 @@
 
     <properties>
         <maven.deploy.skip>false</maven.deploy.skip>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -37,15 +37,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
-                <configuration>
+                <version>3.13.0</version> <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>3.3.1</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -58,7 +57,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.6.0</version>
                 <configuration>
                     <artifactSet>
                         <excludes>
@@ -81,17 +80,11 @@
                 <version>3.1.0</version>
                 <executions>
                     <execution>
-                        <phase>
-                            install
-                        </phase>
+                        <phase>install</phase>
                         <configuration>
                             <target>
-                                <copy file="target\${project.artifactId}-${project.version}.jar" tofile="out\paper\1.19.2\plugins\${project.artifactId}.jar"/>
-                                <copy file="target\${project.artifactId}-${project.version}.jar" tofile="out\paper\1.18.2\plugins\${project.artifactId}.jar"/>
-                                <copy file="target\${project.artifactId}-${project.version}.jar" tofile="out\paper\1.20.1\plugins\${project.artifactId}.jar"/>
-                                <copy file="target\${project.artifactId}-${project.version}.jar" tofile="out\spigot\1.19.2\plugins\${project.artifactId}.jar"/>
-                                <copy file="target\${project.artifactId}-${project.version}.jar" tofile="out\spigot\1.18.2\plugins\${project.artifactId}.jar"/>
-                                <copy file="target\${project.artifactId}-${project.version}.jar" tofile="out\spigot\1.20.1\plugins\${project.artifactId}.jar"/>
+                                <copy file="target\${project.artifactId}-${project.version}.jar" tofile="out\paper\1.21.1\plugins\${project.artifactId}.jar"/>
+                                <copy file="target\${project.artifactId}-${project.version}.jar" tofile="out\spigot\1.21.1\plugins\${project.artifactId}.jar"/>
                             </target>
                         </configuration>
                         <goals>
@@ -107,33 +100,19 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.18.2-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
+            <version>1.21.1-R0.1-SNAPSHOT</version> <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.palmergames.bukkit.towny</groupId>
             <artifactId>towny</artifactId>
-            <version>0.99.0.0</version>
-            <scope>provided</scope>
+            <version>0.100.4.0</version> <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>minecraftwars</groupId>
-            <artifactId>gringotts</artifactId>
-            <version>${version}</version>
+            <groupId>com.github.nikosgram</groupId> <artifactId>gringotts</artifactId>
+            <version>2.12.5</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
-    <scm>
-        <url>https://github.com/nikosgram/Gringotts</url>
-        <connection>scm:git:git@github.com:nikosgram/Gringotts.git</connection>
-        <developerConnection>scm:git:git@github.com:nikosgram/Gringotts.git</developerConnection>
-    </scm>
-
-    <issueManagement>
-        <system>GitHub</system>
-        <url>https://github.com/nikosgram/gringotts/issues</url>
-    </issueManagement>
 
     <repositories>
         <repository>
@@ -141,16 +120,11 @@
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
         <repository>
-            <id>glaremasters repo</id>
+            <id>jitpack.io</id> <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>towny-repo</id>
             <url>https://repo.glaremasters.me/repository/towny/</url>
         </repository>
     </repositories>
-
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub nikosgram Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/nikosgram/gringotts-towny</url>
-        </repository>
-    </distributionManagement>
 </project>
